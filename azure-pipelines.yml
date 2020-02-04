@@ -119,7 +119,14 @@ stages:
       inputs:
         versionSpec: '$(pythonVersion)'
       displayName: 'Use Python $(pythonVersion)'
+      
+    - powershell: |
+        (Get-Item "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe").VersionInfo 
+      displayName: 'We want to know the Chrome version installed on this darned machine'
     
+    - script: webdrivermanager chrome:$(ChromeVersion) --linkpath AUTO
+      displayName: 'Manage Chrome webdriver version $(ChromeVersion)'
+  
     - script: |
         python -m venv antenv
         atnenv\bin\activate.bat

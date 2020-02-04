@@ -6,7 +6,7 @@ import pytest
 @pytest.fixture(scope="module")
 def driver():
     options=None
-    driver = webdriver.Chrome(dirname(__file__) + r"/../../chromedriver.exe", 
+    driver = webdriver.Chrome(r"chromedriver.exe", 
         options=options)
     driver.implicitly_wait(5)
     yield driver
