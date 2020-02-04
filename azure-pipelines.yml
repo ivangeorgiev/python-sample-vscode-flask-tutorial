@@ -128,8 +128,8 @@ stages:
       displayName: 'Manage Chrome webdriver version $(ChromeVersion)'
   
     - script: |
-        python -m venv antenv
-        atnenv\bin\activate.bat
+        rem python -m venv antenv
+        rem atnenv\bin\activate.bat
         python -m pip install --upgrade pip
         pip install setup
         pip install -r requirements.txt
@@ -137,8 +137,8 @@ stages:
       displayName: "Install requirements"
 
     - script: |
-        atnenv\bin\activate.bat
-        pip install pytest pytest-cov selenium
+        rem atnenv\bin\activate.bat
+        pip install pytest pytest-cov selenium webdrivermanager
         pytest tests/ui --doctest-modules --junitxml=junit/test-results.xml --cov=hello_app --cov-report=xml --cov-report=html
       displayName: 'Run UI Tests'
 
