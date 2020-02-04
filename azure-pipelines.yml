@@ -110,8 +110,8 @@ stages:
     displayName: 'Run UI tests'
     pool:
       vmImage: 'windows-2019'
-    variables:
-    - group: 'Release'
+    #variables:
+    #- group: 'Release'
     steps: 
 
 
