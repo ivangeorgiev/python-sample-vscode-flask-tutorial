@@ -51,8 +51,8 @@ stages:
         source antenv/bin/activate
         pip install pytest
         pip install pytest-cov
-        pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=hello_app --cov-report=xml --cov-report=html
-      displayName: 'Test with pytest'
+        pytest tests/unit --doctest-modules --junitxml=junit/test-results.xml --cov=hello_app --cov-report=xml --cov-report=html
+      displayName: 'Run Unit Tests'
     
     - task: PublishTestResults@2
       condition: succeededOrFailed()
@@ -105,4 +105,27 @@ stages:
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
-              
+  - job: RunUITests
+    dependsOn: DeploymentJob
+    displayName: 'Run UI tests'
+    pool:
+      vmImage: 'windows-2019'
+    variables:
+    - group: 'Release'
+    steps: 
+
+
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(pythonVersion)'
+      displayName: 'Use Python $(pythonVersion)'
+    
+    - script: |
+        python -m venv antenv
+        source antenv/bin/activate
+        python -m pip install --upgrade pip
+        pip install setup
+        pip install -r requirements.txt
+        pip install pytest pytest-cov selenium
+      workingDirectory: $(projectRoot)
+      displayName: "Install requirements"
