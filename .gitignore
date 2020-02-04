@@ -106,4 +106,4 @@ venv.bak/
 .vscode/
 settings.json
 junit
-chromedriver.exe
+# chromedriver.exe
