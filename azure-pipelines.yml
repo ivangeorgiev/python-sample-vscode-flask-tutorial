@@ -47,6 +47,18 @@ stages:
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
 
+    - script: |
+        pip install pytest
+        pip install pytest-cov
+        pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=hello_app --cov-report=xml --cov-report=html
+      displayName: 'Test with pytest'
+    
+    - task: PublishTestResults@2
+      condition: succeededOrFailed()
+      inputs:
+        testResultsFiles: '**/test-*.xml'
+        testRunTitle: 'Publish test results for Python $(pythonVersion)'
+
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
