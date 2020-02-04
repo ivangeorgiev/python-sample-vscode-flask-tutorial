@@ -48,6 +48,7 @@ stages:
       displayName: "Install requirements"
 
     - script: |
+        source antenv/bin/activate
         pip install pytest
         pip install pytest-cov
         pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=hello_app --cov-report=xml --cov-report=html
