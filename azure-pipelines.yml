@@ -58,7 +58,7 @@ stages:
       condition: succeededOrFailed()
       inputs:
         testResultsFiles: '**/test-*.xml'
-        testRunTitle: 'Publish Unit test results for Python $(pythonVersion)'
+        testRunTitle: 'Unit test results for Python $(pythonVersion)'
 
     - task: PublishCodeCoverageResults@1
       inputs:
@@ -138,7 +138,7 @@ stages:
 
     - script: |
         rem atnenv\bin\activate.bat
-        pip install pytest pytest-cov selenium webdrivermanager
+        pip install pytest pytest-bdd pytest-cov selenium webdrivermanager
         pytest tests/ui --doctest-modules --junitxml=junit/test-results.xml --cov=hello_app --cov-report=xml --cov-report=html
       displayName: 'Run UI Tests'
 
@@ -146,4 +146,4 @@ stages:
       condition: succeededOrFailed()
       inputs:
         testResultsFiles: '**/test-*.xml'
-        testRunTitle: 'Publish UI test results for Python $(pythonVersion)'
+        testRunTitle: 'Selenium UI test results for Python $(pythonVersion)'
