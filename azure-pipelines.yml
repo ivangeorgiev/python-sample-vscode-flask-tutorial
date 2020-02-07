@@ -140,6 +140,7 @@ stages:
 
     - script: |
         rem atnenv\bin\activate.bat
+        mkdir junit
         pytest tests/ui --doctest-modules  --junitxml=junit/test-results.xml --cucumberjson=junit/cucumber-results.json --cucumberjson-expanded
         rem json_to_junit junit/cucumber-results.json junit/cucumber-results.xml
       displayName: 'Run UI Tests'
