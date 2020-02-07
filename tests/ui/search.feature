@@ -10,3 +10,5 @@ Feature: Search for websites
     Given the browser is opened
     When I navigate to "https://python-sample-flask-13382.azurewebsites.net/"
     And click "nav-home" navigates to page "Home"
+    And click "nav-about" navigates to page "About"
+    And click "nav-contact" navigates to page "Contact"
