@@ -142,7 +142,7 @@ stages:
         rem atnenv\bin\activate.bat
         mkdir junit
         pytest tests/ui --doctest-modules  --junitxml=junit/test-results.xml --cucumberjson=junit/cucumber-results.json --cucumberjson-expanded
-        json_to_junit junit/cucumber-results.json junit/cucumber-results.xml
+        json_to_junit junit/cucumber-results.json junit/test-cucumber-results.xml
       displayName: 'Run UI Tests'
 
     - task: PublishTestResults@2
