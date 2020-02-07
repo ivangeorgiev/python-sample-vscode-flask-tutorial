@@ -149,4 +149,7 @@ stages:
       condition: succeededOrFailed()
       inputs:
         testResultsFiles: '**/test-*.xml'
-        testRunTitle: 'Selenium UI test results for Python $(pythonVersion)'
+        testRunTitle: 'UI test results for Python $(pythonVersion)'
+        publishRunAttachments: true
+        mergeTestResults: false
+

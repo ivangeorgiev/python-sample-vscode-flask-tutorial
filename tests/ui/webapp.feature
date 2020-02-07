@@ -1,14 +1,21 @@
 Feature: Search for websites
 
     Scenario: submit search query returns list of results
-    Given the browser is opened
-    When I navigate to "https://www.google.com/"
-    And submit 'seleniumhq' query
+    Given url "https://www.google.com/" is loaded
+    When submit 'seleniumhq' query
     Then The browser returns search results
 
-    Scenario: site is up
-    Given the browser is opened
-    When I navigate to "https://python-sample-flask-13382.azurewebsites.net/"
-    And click "nav-home" navigates to page "Home"
-    And click "nav-about" navigates to page "About"
-    And click "nav-contact" navigates to page "Contact"
+    Scenario: click Home nav opens Home page
+    Given page About is loaded
+    When click "nav-home"
+    Then page with title "Home" is loaded
+
+    Scenario: click About nav opens About page
+    Given page Home is loaded
+    When click "nav-about"
+    Then page with title "About us" is loaded
+
+    Scenario: click Contact nav opens Contact page
+    Given page Home is loaded
+    When click "nav-contact"
+    Then page with title "Contact us" is loaded
