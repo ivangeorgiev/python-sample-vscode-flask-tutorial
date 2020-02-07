@@ -138,10 +138,10 @@ stages:
 
     - script: |
         rem atnenv\bin\activate.bat
-        pip install pytest pytest-bdd pytest-cov selenium webdrivermanager
+        pip install pytest pytest-bdd selenium webdrivermanager
         pip install cucumber-json-to-junit-xml
-        pytest tests/ui --doctest-modules  --junitxml=junit/test-results.xml --cov=hello_app --cov-report=xml --cov-report=html --cucumberjson=junit/cucumber-results.json --cucumberjson-expanded
-        json_to_junit junit/cucumber-results.json junit/cucumber-results.xml
+        pytest tests/ui --doctest-modules  --junitxml=junit/test-results.xml --cucumberjson=junit/cucumber-results.json --cucumberjson-expanded
+        # json_to_junit junit/cucumber-results.json junit/cucumber-results.xml
       displayName: 'Run UI Tests'
 
     - task: PublishTestResults@2
