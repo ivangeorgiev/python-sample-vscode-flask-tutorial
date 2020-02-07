@@ -134,7 +134,7 @@ stages:
         pip install setup
         pip install -r requirements.txt
         pip install pytest pytest-bdd pytest-cov selenium webdrivermanager
-        pip install cucumber-json-to-junit-xml
+        rem pip install cucumber-json-to-junit-xml
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
 
