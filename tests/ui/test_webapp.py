@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from pytest_bdd import scenario, given, when, then, parsers
 import pytest
 
-@pytest.mark.skip(reason="no way of currently testing this")
+# @pytest.mark.skip(reason="no way of currently testing this")
 @scenario("./search.feature", "submit search query returns list of results")
 def test_submit_search_query_returns_a_list_of_results():
     pass
