@@ -10,15 +10,15 @@ def test_submit_search_query_returns_a_list_of_results():
 
 # @pytest.mark.skip(reason="no way of currently testing this")
 @scenario("./webapp.feature", "click Home nav opens Home page")
-def test_site_is_up():
+def test_nav_home():
     pass
 
 @scenario("./webapp.feature", "click About nav opens About page")
-def test_site_is_up():
+def test_nav_about():
     pass
 
 @scenario("./webapp.feature", "click Contact nav opens Contact page")
-def test_site_is_up():
+def test_nav_contact():
     pass
 
 @given("the browser is opened", scope="session")
